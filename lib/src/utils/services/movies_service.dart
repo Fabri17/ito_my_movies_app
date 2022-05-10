@@ -69,6 +69,33 @@ class MoviesService {
 
     return movies;
   }
+
+  Future<List<Movie>> getQueryMovies(String query) async {
+    var url = Uri.https(
+      baseUrl,
+      '/3/search/movie',
+      {
+        'api_key': "c8001eef492af921b62625adc13e1d13",
+        'query': query,
+      },
+    );
+
+    var response = await http.get(url, headers: {
+      'Content-Type': 'application/json',
+    });
+    List<Movie> movies = [];
+    if (response.statusCode == 200) {
+      var json = convert.jsonDecode(response.body) as Map<String, dynamic>;
+
+      for (var i = 0; i < json['results'].length; i++) {
+        movies.add(Movie.fromJson(json['results'][i]));
+      }
+    } else {
+      debugPrint('Request failed with status: ${response.statusCode}.');
+    }
+
+    return movies;
+  }
 }
 
 MoviesService moviesServices = MoviesService();

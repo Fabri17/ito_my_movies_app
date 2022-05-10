@@ -4,9 +4,18 @@ import 'package:my_movies_app/src/constants/assets.dart';
 import 'package:my_movies_app/src/constants/colors.dart';
 
 class SearchFieldWidget extends StatelessWidget {
-  const SearchFieldWidget({Key? key, required this.padding}) : super(key: key);
+  const SearchFieldWidget({
+    Key? key,
+    required this.padding,
+    this.readOnly = false,
+    this.onTap,
+    this.onChange,
+  }) : super(key: key);
 
   final EdgeInsetsGeometry padding;
+  final bool readOnly;
+  final Function? onTap;
+  final Function(String)? onChange;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +40,17 @@ class SearchFieldWidget extends StatelessWidget {
             ),
             Expanded(
               child: TextField(
+                readOnly: readOnly,
+                onTap: () {
+                  if (onTap != null) {
+                    onTap!.call();
+                  }
+                },
+                onChanged: (value) {
+                  if (onChange != null) {
+                    onChange!.call(value);
+                  }
+                },
                 style: TextStyle(
                   color: colors.kWhiteColor.withOpacity(0.6),
                   fontSize: 17,

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:my_movies_app/src/constants/assets.dart';
 import 'package:my_movies_app/src/constants/colors.dart';
+import 'package:my_movies_app/src/pages/search_page/search_page.dart';
 import 'package:my_movies_app/src/utils/models/movie.dart';
 import 'package:my_movies_app/src/utils/services/movies_service.dart';
 import 'package:my_movies_app/src/widgets/inputs/search_input.dart';
@@ -114,10 +115,19 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(
                   height: 30,
                 ),
-                const SearchFieldWidget(
-                  padding: EdgeInsets.symmetric(
+                SearchFieldWidget(
+                  padding: const EdgeInsets.symmetric(
                     horizontal: 20,
                   ),
+                  readOnly: true,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SearchPage(),
+                      ),
+                    );
+                  },
                 ),
                 const SizedBox(
                   height: 39,
@@ -230,4 +240,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
