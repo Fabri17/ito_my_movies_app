@@ -49,6 +49,26 @@ class MoviesService {
 
     return movies;
   }
+
+  Future<List<Movie>> getRelatedMovies(int movieID) async {
+    var url = Uri.https(baseUrl, '/3/movie/$movieID/similar');
+    var response = await http.get(url, headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $accessToken',
+    });
+    List<Movie> movies = [];
+    if (response.statusCode == 200) {
+      var json = convert.jsonDecode(response.body) as Map<String, dynamic>;
+
+      for (var i = 0; i < json['results'].length; i++) {
+        movies.add(Movie.fromJson(json['results'][i]));
+      }
+    } else {
+      debugPrint('Request failed with status: ${response.statusCode}.');
+    }
+
+    return movies;
+  }
 }
 
 MoviesService moviesServices = MoviesService();
