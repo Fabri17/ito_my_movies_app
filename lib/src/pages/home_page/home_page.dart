@@ -156,16 +156,16 @@ class _HomePageState extends State<HomePage> {
 
                       return SizedBox(
                         height: 170,
-                        child: ListView.builder(
-                          shrinkWrap: true,
+                        child: ListView(
                           scrollDirection: Axis.horizontal,
-                          itemCount: popularMovies.length,
-                          itemBuilder: (context, index) {
-                            return MovieCard(
-                              index: index,
-                              movie: popularMovies[index],
-                            );
-                          },
+                          children: popularMovies
+                              .map(
+                                (e) => MovieCard(
+                                  index: popularMovies.indexOf(e),
+                                  movie: e,
+                                ),
+                              )
+                              .toList(),
                         ),
                       );
                     } else {
@@ -206,16 +206,16 @@ class _HomePageState extends State<HomePage> {
 
                       return SizedBox(
                         height: 170,
-                        child: ListView.builder(
-                          shrinkWrap: true,
+                        child: ListView(
                           scrollDirection: Axis.horizontal,
-                          itemCount: upcomingMovies.length,
-                          itemBuilder: (context, index) {
-                            return MovieCard(
-                              index: index,
-                              movie: upcomingMovies[index],
-                            );
-                          },
+                          children: upcomingMovies
+                              .map(
+                                (e) => MovieCard(
+                                  index: upcomingMovies.indexOf(e),
+                                  movie: e,
+                                ),
+                              )
+                              .toList(),
                         ),
                       );
                     } else {

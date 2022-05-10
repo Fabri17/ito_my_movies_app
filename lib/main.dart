@@ -20,7 +20,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'ITO Movies',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: GoogleFonts.poppins().fontFamily),
       home: const SplashScreen(),
     );
