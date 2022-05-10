@@ -6,8 +6,8 @@ import 'dart:convert' as convert;
 
 import 'package:my_movies_app/src/utils/models/movie.dart';
 
-class MoviesServices {
-  String baseUrl = Apis.MOVIES_API;
+class MoviesService {
+  String baseUrl = Apis.moviesApi;
   String accessToken = dotenv.env['MOVIES_ACCESS_TOKEN']!;
 
   Future<List<Movie>> getPopularMovies() async {
@@ -51,4 +51,4 @@ class MoviesServices {
   }
 }
 
-MoviesServices moviesServices = MoviesServices();
+MoviesService moviesServices = MoviesService();

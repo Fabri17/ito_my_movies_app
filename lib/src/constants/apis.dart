@@ -1,3 +1,4 @@
 class Apis {
-  static String MOVIES_API = "api.themoviedb.org";
+  static const String moviesApi = "api.themoviedb.org";
+  static const String authApi = "reqres.in";
 }
