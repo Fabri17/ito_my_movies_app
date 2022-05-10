@@ -16,4 +16,9 @@ class Assets {
   static const String kMaskLastIndex = 'assets/mask/mask_lastIndex.png';
   static const String kMaskCenter = 'assets/mask/mask.png';
   static const String kMaskCast = 'assets/mask/mask_cast.png';
+
+  //Lottie
+  static const String kSplash = 'assets/lottie/movie_cut.json';
+  static const String kLoader = 'assets/lottie/movie_loader_coco.json';
+
 }
